@@ -17,7 +17,7 @@ class LessonResource extends Resource
 {
     protected static ?string $model = Lesson::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
 
     public static function form(Form $form): Form
     {
@@ -46,11 +46,8 @@ class LessonResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('student.id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('tutor.id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('student.user.name')
+                    ->label('Student')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('duration')
                     ->numeric()
@@ -76,12 +73,10 @@ class LessonResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                //
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                //
             ]);
     }
 
@@ -96,8 +91,11 @@ class LessonResource extends Resource
     {
         return [
             'index' => Pages\ListLessons::route('/'),
-            'create' => Pages\CreateLesson::route('/create'),
-            'edit' => Pages\EditLesson::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('tutor_id', auth()->id());
     }
 }
