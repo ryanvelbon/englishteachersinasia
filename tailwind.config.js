@@ -6,8 +6,8 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                primary: colors.orange,
-                secondary: colors.blue,
+                primary: colors.teal,
+                secondary: colors.violet,
                 gray: colors.stone,
             },
             fontFamily: {

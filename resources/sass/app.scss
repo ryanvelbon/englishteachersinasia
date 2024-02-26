@@ -24,11 +24,11 @@
 @tailwind components;
 
 .btn {
-   @apply px-5 py-2.5 text-sm font-medium focus:ring-4 focus:outline-none rounded-lg text-center;
+   @apply px-4 py-3 text-sm uppercase font-medium focus:ring-4 focus:outline-none rounded text-center transition ease-in-out duration-500;
 }
 
 .btn-xs {
-   @apply px-3 py-2 text-xs;
+   @apply px-2 py-1 text-xs;
 }
 
 .btn-sm {
@@ -36,11 +36,11 @@
 }
 
 .btn-lg {
-   @apply px-5 py-3 text-base;
+   @apply px-6 py-4 text-sm;
 }
 
 .btn-xl {
-   @apply px-6 py-3.5 text-base;
+   @apply px-8 py-6 text-sm;
 }
 
 .btn-primary {

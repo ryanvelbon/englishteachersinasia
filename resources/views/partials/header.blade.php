@@ -1,5 +1,5 @@
-<nav class="bg-gray-800 text-white p-4">
-    <div class="flex justify-between">
+<nav class="bg-gray-800 text-white py-6">
+    <div class="container flex justify-between">
         <div>
             <a href="{{ route('home') }}">Home</a>
         </div>
