@@ -17,8 +17,8 @@ class DemoSeeder extends Seeder
 
         Student::factory(20)->create();
 
-        $startDate = Carbon::now()->subMonths(3);
-        $endDate = Carbon::now()->addMonth(1);
+        $startDate = Carbon::today()->subMonths(3);
+        $endDate = Carbon::today()->addMonth(1);
 
         for ($date = $startDate; $date->lte($endDate); $date->addDay()) {
 
