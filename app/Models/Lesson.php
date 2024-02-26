@@ -19,6 +19,11 @@ class Lesson extends Model
         'status',
     ];
 
+    protected $casts = [
+        'start_time' => 'datetime',
+        'end_time' => 'datetime',
+    ];
+
     public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class);

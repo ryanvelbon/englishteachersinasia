@@ -46,17 +46,20 @@ class LessonResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('student.user.name')
-                    ->label('Student')
+                Tables\Columns\TextColumn::make('start_time')
+                    ->date('l, M d, Y')
+                    ->description(fn (Lesson $record): string => $record->start_time->format('H:i') . ' to ' . $record->end_time->format('H:i'))
                     ->sortable(),
                 Tables\Columns\TextColumn::make('duration')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('start_time')
-                    ->dateTime()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('end_time')
-                    ->dateTime()
+                    ->numeric(),
+                Tables\Columns\ImageColumn::make('student.user.avatar')
+                    ->label('')
+                    ->height(50)
+                    ->circular()
+                    ->defaultImageUrl(url('img/user.png')),
+                Tables\Columns\TextColumn::make('student.user.name')
+                    ->label('Student')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
                     ->searchable(),

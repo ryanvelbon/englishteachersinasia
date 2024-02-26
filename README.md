@@ -17,3 +17,11 @@ Create sample data (optional)
 Cache Blade Icons for better performance.
 
     $ php artisan icon:cache
+
+
+
+Run this command ensure that images load properly:
+
+    $ php artisan storage:link
+
+Also `APP_URL` should match the domain you're using.
