@@ -14,9 +14,9 @@ class DemoSeeder extends Seeder
 {
     public function run(): void
     {
-        Tutor::factory(20)->create();
+        $tutors = Tutor::factory(20)->create();
 
-        Student::factory(20)->create();
+        $students = Student::factory(20)->create();
 
         $startDate = Carbon::today()->subMonths(3);
         $endDate = Carbon::today()->addMonth(1);
@@ -25,8 +25,8 @@ class DemoSeeder extends Seeder
 
             for ($i=0; $i < 10; $i++) {
 
-                $tutorId = Tutor::inRandomOrder()->first()->id;
-                $studentId = Student::inRandomOrder()->first()->id;
+                $tutorId = $tutors->random()->id;
+                $studentId = $students->random()->id;
 
                 $duration = rand(1, 4) * 30;
                 $startTime = $date->copy()->addHours(rand(8, 16)); // lessons start between 8 AM and 4 PM
@@ -40,13 +40,16 @@ class DemoSeeder extends Seeder
                     'end_time' => $endTime,
                     'status' => collect(['planned', 'ongoing', 'completed', 'cancelled'])->random(),
                 ]);
-
-                TutorReview::factory()->create([
-                    'tutor_id' => $tutorId,
-                    'student_id' => $studentId,
-                ]);
             }
         }
 
+        for ($date = Carbon::now()->subYears(2); $date->lte(Carbon::today()); $date->addDay()) {
+
+            TutorReview::factory()->create([
+                'tutor_id' => $tutors->random()->id,
+                'student_id' => $students->random()->id,
+                'created_at' => $date,
+            ]);
+        }
     }
 }

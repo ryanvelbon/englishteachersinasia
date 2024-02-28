@@ -29,6 +29,6 @@ class Tutor extends Model
 
     public function reviews()
     {
-        return $this->hasMany(TutorReview::class);
+        return $this->hasMany(TutorReview::class)->orderBy('created_at', 'desc');
     }
 }

@@ -64,7 +64,7 @@
                                         @endfor
                                     </div>
                                     <p class="text-gray-400 text-sm">
-                                        <span>5 days ago</span>
+                                        <span>{{ $review->created_at->diffForHumans() }}</span>
                                         by
                                         <span class="font-semibold">{{ $review->student->user->name }}</span>
                                     </p>
