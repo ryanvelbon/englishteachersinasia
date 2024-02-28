@@ -13,7 +13,7 @@ class DemoSeeder extends Seeder
 {
     public function run(): void
     {
-        Tutor::factory(5)->create();
+        Tutor::factory(20)->create();
 
         Student::factory(20)->create();
 

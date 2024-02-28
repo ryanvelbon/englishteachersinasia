@@ -11,6 +11,8 @@ return new class extends Migration
         Schema::create('tutors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->unsignedTinyInteger('rate')->default(10); // USD per hour
+            $table->boolean('is_native')->nullable();
             $table->timestamps();
         });
     }

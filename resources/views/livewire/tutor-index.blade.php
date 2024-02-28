@@ -5,11 +5,13 @@
                 <li class="border border-2">
                     <div class="relative">
                         <img class="aspect-[3/2] w-full object-cover" src="https://placehold.co/500" alt="">
-                        <div class="absolute bottom-6 left-0 bg-primary-500/50 text-white text-lg font-bold w-20 h-12 flex items-center justify-center">$15</div>
-                        <div class="absolute rotate-45 top-6 right-0 bg-black text-white px-4 py-2 text-center uppercase tracking-widest text-xs">Native</div>
+                        <div class="absolute bottom-6 left-0 bg-primary-500/50 text-white text-lg font-bold w-20 h-12 flex items-center justify-center">$ {{ $tutor->rate }}</div>
+                        @if($tutor->is_native)
+                            <div class="absolute rotate-45 top-6 right-0 bg-black text-white px-4 py-2 text-center uppercase tracking-widest text-xs">Native</div>
+                        @endif
                     </div>
                     <div class="py-6 px-4">
-                        <h3 class="text-lg font-semibold leading-8 tracking-tight text-gray-900">Lindsay Walton</h3>
+                        <h3 class="text-lg font-semibold leading-8 tracking-tight text-gray-900">{{ $tutor->user->name }}</h3>
                         <p class="text-base leading-7 text-gray-600">
                             <i class="fa-sharp fa-solid fa-location-dot"></i>
                             <span>Da Nang, Vietnam</span>

@@ -13,6 +13,8 @@ class Tutor extends Model
 
     protected $fillable = [
         'user_id',
+        'rate',
+        'is_native',
     ];
 
     public function user(): BelongsTo
