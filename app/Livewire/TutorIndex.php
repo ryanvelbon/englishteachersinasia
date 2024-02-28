@@ -12,7 +12,10 @@ class TutorIndex extends Component
 
     public function render()
     {
-        $tutors = Tutor::paginate(12);
+        $tutors = Tutor::query()
+                    ->with('user')
+                    ->withCount('reviews')
+                    ->paginate(12);
 
         return view('livewire.tutor-index', [
             'tutors' => $tutors,

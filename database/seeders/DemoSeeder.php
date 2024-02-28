@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Lesson;
 use App\Models\Student;
 use App\Models\Tutor;
+use App\Models\TutorReview;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -38,6 +39,11 @@ class DemoSeeder extends Seeder
                     'start_time' => $startTime,
                     'end_time' => $endTime,
                     'status' => collect(['planned', 'ongoing', 'completed', 'cancelled'])->random(),
+                ]);
+
+                TutorReview::factory()->create([
+                    'tutor_id' => $tutorId,
+                    'student_id' => $studentId,
                 ]);
             }
         }

@@ -18,7 +18,7 @@
                     <i class="fa-solid fa-star-sharp text-primary-500"></i>
                     <i class="fa-solid fa-star-sharp text-primary-500"></i>
                     <i class="fa-solid fa-star-sharp text-gray-200"></i>
-                    <span class="text-base text-gray-200 ml-2">57 reviews</span>
+                    <span class="text-base text-gray-200 ml-2">{{ $tutor->reviews_count }} reviews</span>
                 </div>
                 <p class="text-gray-200">Da Nang, Vietnam</p>
             </div>
@@ -32,7 +32,7 @@
     <div class="container flex justify-between">
         <nav class="text-gray-500 space-x-4 my-auto">
             <a href="#profile-bio" class="hover:text-gray-800">Profile</a>
-            <a href="#profile-reviews" class="hover:text-gray-800">Reviews (57)</a>
+            <a href="#profile-reviews" class="hover:text-gray-800">Reviews ({{ $tutor->reviews_count }})</a>
             <a href="#profile-interview" class="hover:text-gray-800">Interview</a>
         </nav>
         <div class="flex gap-4 py-4">
@@ -51,32 +51,34 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
             <div id="profile-reviews" class="py-16 border-0 border-b">
-                <h4 class="mb-6 text-3xl text-gray-500">57 Reviews</h4>
+                <h4 class="mb-6 text-3xl text-gray-500">{{ $tutor->reviews_count }} Reviews</h4>
                 <ul class="space-y-3">
-                    @for($i=0; $i<3; $i++)
+                    @forelse($tutor->reviews as $review)
                         <li class="border rounded p-6">
                             <div class="flex gap-2">
                                 <img class="rounded h-16" src="https://placehold.co/100">
                                 <div class="my-auto">
                                     <div>
-                                        <i class="fa-solid fa-star-sharp text-yellow-500"></i>
-                                        <i class="fa-solid fa-star-sharp text-yellow-500"></i>
-                                        <i class="fa-solid fa-star-sharp text-yellow-500"></i>
-                                        <i class="fa-solid fa-star-sharp text-yellow-500"></i>
-                                        <i class="fa-solid fa-star-sharp text-yellow-500"></i>
+                                        @for($i=0; $i<5; $i++)
+                                            <i class="fa-solid fa-star-sharp @if($review->rating > $i) text-yellow-500 @else text-gray-500 @endif"></i>
+                                        @endfor
                                     </div>
                                     <p class="text-gray-400 text-sm">
                                         <span>5 days ago</span>
                                         by
-                                        <span class="font-semibold">Tony Adams</span>
+                                        <span class="font-semibold">{{ $review->student->user->name }}</span>
                                     </p>
                                 </div>
                             </div>
                             <div class="mt-6 text-sm text-gray-800">
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                {!! $review->content !!}
                             </div>
                         </li>
-                    @endfor
+                    @empty
+                        <div>
+                            No reviews yet.
+                        </div>
+                    @endforelse
                 </ul>
             </div>
             <div id="profile-interview" class="py-16 border-0 border-b">

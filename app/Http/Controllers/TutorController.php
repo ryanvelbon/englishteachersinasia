@@ -11,7 +11,10 @@ class TutorController extends Controller
 {
     public function show($id)
     {
-        $tutor = Tutor::find($id);
+        $tutor = Tutor::query()
+                    ->withCount('reviews')
+                    ->with('reviews.student.user')
+                    ->find($id);
 
         if (!$tutor) {
             return abort(404);

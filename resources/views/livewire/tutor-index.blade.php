@@ -31,7 +31,7 @@
                                 <i class="fa-solid fa-star-sharp text-primary-500"></i>
                                 <i class="fa-solid fa-star-sharp text-primary-500"></i>
                                 <i class="fa-solid fa-star-sharp"></i>
-                                <span class="text-xs text-gray-600 ml-2">57 reviews</span>
+                                <span class="text-xs text-gray-600 ml-2">{{ $tutor->reviews_count }} reviews</span>
                             </div>
                             <p class="mt-4 text-xs text-primary-600">View Profile</p>
                         </div>
