@@ -55,6 +55,10 @@ html {
    @apply text-white bg-secondary-500 hover:bg-secondary-600 focus:ring-secondary-300 dark:bg-secondary-400 dark:hover:bg-secondary-500 dark:focus:ring-secondary-600;
 }
 
+.btn-muted {
+   @apply border border-gray-600 text-gray-800 hover:border-primary-400 hover:text-primary-500;
+}
+
 .container {
    @apply mx-auto max-w-7xl px-6 lg:px-8;
 }

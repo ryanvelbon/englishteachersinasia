@@ -1,4 +1,13 @@
-<div class="container py-24">
+<div>
+<aside>
+    <div class="h-16 flex items-center px-8">
+        <a href="#filter-tutors-modal" class="btn btn-sm btn-muted">
+            <i class="fa-regular fa-filter mr-1"></i>
+            <span>Filters</span>
+        </a>
+    </div>
+</aside>
+<main class="container py-12">
     <ul role="list" class="grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
         @forelse($tutors as $tutor)
             <a href="{{ route('tutors.show', $tutor->id ) }}">
@@ -35,4 +44,8 @@
     <div class="mt-8">
         {{ $tutors->links() }}
     </div>
+</main>
+<x-modal name="filter-tutors-modal" width="3xl">
+    Filter your search.
+</x-modal>
 </div>
