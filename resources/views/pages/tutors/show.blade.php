@@ -11,7 +11,7 @@
 
         <div class="container grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="my-auto space-y-6">
-                <h2 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white">John Smith</h2>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white">{{ $tutor->user->name }}</h2>
                 <div>
                     <i class="fa-solid fa-star-sharp text-primary-500"></i>
                     <i class="fa-solid fa-star-sharp text-primary-500"></i>
@@ -40,7 +40,7 @@
                 <i class="fa-sharp fa-regular fa-heart mr-1"></i>
                 Save to favorites
             </button>
-            <a href="" class="btn btn-primary btn-lg">Contact John Smith</a>
+            <a href="" class="btn btn-primary btn-lg">Contact {{ $tutor->user->name }}</a>
         </div>
     </div>
 </section>
@@ -85,7 +85,17 @@
         </main>
         <aside class="space-y-6 mb-12">
             <div class="rounded border bg-white px-6 py-3">
-                card
+                <h3 class="font-bold text-center text-lg text-gray-800 mt-4 mb-4">Choose a package</h3>
+                @foreach($packages as $package)
+                    <div class="w-full mb-2 py-4 text-gray-700 bg-gray-100 hover:text-gray-800 hover:bg-gray-300 focus:ring-primary-300 rounded cursor-pointer text-center">
+                        <p class="font-bold uppercase text-xs mb-1">{{ $package->title }}</p>
+                        <p>
+                            <span class="line-through">${{ $tutor->rate * $package->n_hours }}</span>
+                            <span class="font-bold">${{ $tutor->rate * $package->n_hours * ((100 - $package->discount)/100) }}</span>
+                            for {{ $package->n_hours }} hours tuition
+                        </p>
+                    </div>
+                @endforeach
             </div>
             <div class="rounded border bg-white px-6 py-3">
                 card
