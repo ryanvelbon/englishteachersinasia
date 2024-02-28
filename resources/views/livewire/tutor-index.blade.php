@@ -32,4 +32,7 @@
             <div>No results found.</div>
         @endforelse
     </ul>
+    <div class="mt-8">
+        {{ $tutors->links() }}
+    </div>
 </div>
