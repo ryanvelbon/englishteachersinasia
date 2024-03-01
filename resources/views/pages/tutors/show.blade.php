@@ -4,7 +4,7 @@
 <section id="profile-header" class="bg-gray-800">
     <div class="relative isolate flex flex-col justify-end overflow-hidden pb-8 pt-80 md:pt-20 md:pb-20">
         <div class="md:hidden">
-            <img class="absolute inset-0 -z-10 h-full w-full object-cover" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
+            <img class="absolute inset-0 -z-10 h-full w-full object-cover" src="{{ asset('storage/' . $tutor->user->avatar) }}" alt="">
             <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/60"></div>
             <div class="absolute inset-0 -z-10 ring-1 ring-inset ring-gray-900/10"></div>
         </div>
@@ -23,7 +23,7 @@
                 <p class="text-gray-200">Da Nang, Vietnam</p>
             </div>
             <div class="hidden md:block">
-                <img class="mx-auto h-96" src="http://placehold.co/600">
+                <img class="mx-auto h-96" src="{{ asset('storage/' . $tutor->user->avatar) }}">
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
                     @forelse($tutor->reviews as $review)
                         <li class="border rounded p-6">
                             <div class="flex gap-2">
-                                <img class="rounded h-16" src="https://placehold.co/100">
+                                <img class="rounded h-16" src="{{ asset('storage/' . $review->student->user->avatar) }}">
                                 <div class="my-auto">
                                     <div>
                                         @for($i=0; $i<5; $i++)

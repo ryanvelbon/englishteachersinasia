@@ -13,8 +13,8 @@
                 <a href="{{ route('tutors.show', $tutor->id ) }}">
                     <li class="border border-2">
                         <div class="relative">
-                            <img class="aspect-[3/2] w-full object-cover" src="https://placehold.co/500" alt="">
-                            <div class="absolute bottom-6 left-0 bg-primary-500/50 text-white text-lg font-bold w-20 h-12 flex items-center justify-center">$ {{ $tutor->rate }}</div>
+                            <img class="aspect-[3/2] w-full object-cover" src="{{ asset('storage/' . $tutor->user->avatar) }}" alt="Avatar of {{ $tutor->user->name }}">
+                            <div class="absolute bottom-6 left-0 bg-primary-500 text-white text-lg font-bold w-20 h-12 flex items-center justify-center">$ {{ $tutor->rate }}</div>
                             @if($tutor->is_native)
                                 <div class="absolute rotate-45 top-6 right-0 bg-black text-white px-4 py-2 text-center uppercase tracking-widest text-xs">Native</div>
                             @endif

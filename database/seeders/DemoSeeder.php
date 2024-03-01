@@ -6,6 +6,7 @@ use App\Models\Lesson;
 use App\Models\Student;
 use App\Models\Tutor;
 use App\Models\TutorReview;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,9 +15,15 @@ class DemoSeeder extends Seeder
 {
     public function run(): void
     {
-        $tutors = Tutor::factory(20)->create();
+        $tutors = Tutor::factory(50)->create();
+        $students = Student::factory(50)->create();
 
-        $students = Student::factory(20)->create();
+        $users = User::all();
+
+        $users->each(function ($user, $index) {
+            $user->avatar = 'user' . ($index+1) . '.png';
+            $user->save();
+        });
 
         $startDate = Carbon::today()->subMonths(3);
         $endDate = Carbon::today()->addMonth(1);

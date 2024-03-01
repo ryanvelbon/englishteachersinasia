@@ -13,6 +13,7 @@ Create sample data (optional)
 
     $ php artisan db:demo
 
+Add 100 profile pics named `user1.png` to `user100.png` in `/storage/app/public`.
 
 Cache Blade Icons for better performance.
 
