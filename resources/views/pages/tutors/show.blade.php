@@ -29,18 +29,18 @@
     </div>
 </section>
 <section id="profile-subnav" class="border-0 border-b">
-    <div class="container flex justify-between">
-        <nav class="text-gray-500 space-x-4 my-auto">
+    <div class="container md:flex md:justify-between">
+        <nav class="text-gray-500 space-x-4 my-auto hidden md:block">
             <a href="#profile-bio" class="hover:text-gray-800">Profile</a>
             <a href="#profile-reviews" class="hover:text-gray-800">Reviews ({{ $tutor->reviews_count }})</a>
             <a href="#profile-interview" class="hover:text-gray-800">Interview</a>
         </nav>
-        <div class="flex gap-4 py-4">
-            <button class="btn btn-lg text-gray-500 hover:text-primary-500 hover:bg-gray-100">
+        <div class="flex flex-col justify-center sm:flex-row gap-4 py-4">
+            <button class="w-full md:w-auto btn btn-lg text-gray-500 hover:text-primary-500 hover:bg-gray-100">
                 <i class="fa-sharp fa-regular fa-heart mr-1"></i>
                 Save to favorites
             </button>
-            <a href="" class="btn btn-primary btn-lg">Contact {{ $tutor->user->name }}</a>
+            <a href="" class="w-full md:w-auto btn btn-primary btn-lg">Contact {{ $tutor->user->name }}</a>
         </div>
     </div>
 </section>
